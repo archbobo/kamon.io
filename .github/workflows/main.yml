@@ -13,7 +13,7 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v1
     - name: Create the Jekyll User
-      run: addgroup -Sg 1000 jekyll && adduser -Su 1000 -G jekyll jekyll
+      run: sudo groupadd -r jekyll --gid=1000 && sudo useradd -r -g jekyll --uid=1000 jekyll
     - name: Create the build directory
       run: mkdir $GITHUB_WORKSPACE/_site && chwon jekyll:jekyll $GITHUB_WORKSPACE/_site
     - name: Build the Jekyll Site

@@ -13,7 +13,7 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v1
     - name: Install Jekyll
-      run: gem install jekyll bundler
+      run: apt-get install ruby-full build-essential zlib1g-dev && gem install jekyll bundler
     - name: Build the Jekyll Site
       run: docker run --rm --user=root:root --volume="$GITHUB_WORKSPACE:/srv/jekyll" jekyll/jekyll:3.8 jekyll build
     - name: Package the Docker Image

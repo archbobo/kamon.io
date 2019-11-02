@@ -13,4 +13,4 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v1
     - name: Run a one-line script
-      run: docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build
+      run: docker run --rm --volume="$PWD:/srv/jekyll" jekyll/jekyll:3.8 jekyll build

@@ -13,7 +13,7 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v1
     - name: Create the build directory
-      run: mkdir $GITHUB_WORKSPACE/_site && chown 1000:1000 $GITHUB_WORKSPACE/_site
+      run: mkdir $GITHUB_WORKSPACE/_site && sudo chown 1000:1000 $GITHUB_WORKSPACE/_site
     - name: Build the Jekyll Site
       run: docker run --rm --volume="$GITHUB_WORKSPACE:/srv/jekyll" jekyll/jekyll:3.8 jekyll build
     - name: Package the Docker Image

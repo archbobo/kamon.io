@@ -13,8 +13,8 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v1
     - name: Install Jekyll
-      run: sudo apt-get install ruby-full build-essential zlib1g-dev && gem install jekyll bundler
+      run: sudo apt-get install ruby-full build-essential zlib1g-dev && sudo gem install jekyll bundler
     - name: Build the Jekyll Site
-      run: docker run --rm --user=root:root --volume="$GITHUB_WORKSPACE:/srv/jekyll" jekyll/jekyll:3.8 jekyll build
+      run: jekyll build
     - name: Package the Docker Image
       run: docker build --tag="kamon/kamon.io:$GITHUB_SHA" $GITHUB_WORKSPACE

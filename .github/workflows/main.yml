@@ -12,5 +12,7 @@ jobs:
     steps:
     - name: Checkout the code
       uses: actions/checkout@v1
-    - name: Run a one-line script
+    - name: Build the Jekyll Site
       run: docker run --rm --volume="$GITHUB_WORKSPACE/kamon.io:/srv/jekyll" jekyll/jekyll:3.8 jekyll build
+    - name: Package the Docker Image
+      run: docker build -t kamon/kamon.io:$GITHUB_SHA kamon.io/

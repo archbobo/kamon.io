@@ -12,10 +12,8 @@ jobs:
     steps:
     - name: Checkout the code
       uses: actions/checkout@v1
-    - name: Create the Jekyll User
-      run: sudo groupadd -r jekyll --gid=1000 && sudo useradd -r -g jekyll --uid=1000 jekyll
     - name: Create the build directory
-      run: mkdir $GITHUB_WORKSPACE/_site && chwon jekyll:jekyll $GITHUB_WORKSPACE/_site
+      run: mkdir $GITHUB_WORKSPACE/_site && chwon 1000:1000 $GITHUB_WORKSPACE/_site
     - name: Build the Jekyll Site
       run: docker run --rm --volume="$GITHUB_WORKSPACE:/srv/jekyll" jekyll/jekyll:3.8 jekyll build
     - name: Package the Docker Image

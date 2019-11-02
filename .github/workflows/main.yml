@@ -1,0 +1,16 @@
+name: Build the Docker Image
+
+on:
+  push:
+    branches:
+      - master
+      - build-with-actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.8 jekyll build
